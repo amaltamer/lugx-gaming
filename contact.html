@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | LUGX Gaming</title>
+  <meta name="description" content="Get in touch with LUGX Gaming — questions, support and partnerships.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ HEADER / NAVIGATION ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+     
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="LUGX Gaming" class="logo-img">
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#shop">Our Shop</a></li>
+          <li><a href="index.html#trending">Product Details</a></li>
+          <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- أيقونة الشوبينج -->
+        <a href="index.html#shop" class="shop-icon-link" aria-label="Our Shop">
+          <img src="images/online-shopping.png" alt="Our Shop">
+        </a>
+        <button class="btn btn-ghost" id="signInBtn">Sign In</button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">// WE'D LOVE TO HEAR FROM YOU</p>
+        <h1>Contact Us</h1>
+        <p class="hero-sub">Questions about an order, a partnership, or just want to talk games? Send us a message.</p>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT INFO + FORM ============ -->
+    <section class="section">
+      <div class="container contact-grid">
+
+        <!-- Contact info cards -->
+        <div class="contact-info">
+          <div class="info-card">
+            <span class="info-icon" aria-hidden="true">&#128205;</span>
+            <div>
+              <h4>Address</h4>
+              <p>12 Nile Corniche, Cairo, Egypt</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-icon" aria-hidden="true">&#9993;</span>
+            <div>
+              <h4>Email</h4>
+              <p>hello@lugxgaming.com</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-icon" aria-hidden="true">&#128222;</span>
+            <div>
+              <h4>Phone</h4>
+              <p>+20 100 000 0000</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-icon" aria-hidden="true">&#128337;</span>
+            <div>
+              <h4>Working Hours</h4>
+              <p>Sun – Thu, 10:00 – 18:00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required>
+              <span class="error-msg" id="fullNameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+              <span class="error-msg" id="emailError"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+            <span class="error-msg" id="subjectError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+            <span class="error-msg" id="messageError"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+
+          <!-- Success feedback shown by JS after valid submit -->
+          <p class="form-success" id="formSuccess" hidden>
+            Thanks! Your message has been sent — we'll get back to you soon.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ MAP ============ -->
+    <section class="map-section">
+      <!--
+        IMAGE / EMBED PLACEHOLDER: replace this block with a real map embed, e.g.
+        <iframe src="https://www.google.com/maps/embed?..." loading="lazy"></iframe>
+      -->
+      <div class="map-placeholder" aria-hidden="true">Map goes here</div>
+    </section>
+  </main>
+
+  <!-- ============ SIGN IN MODAL ============ -->
+  <div class="modal" id="signInModal">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <h3>Sign In</h3>
+      <form>
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required>
+        <label for="loginPass">Password</label>
+        <input type="password" id="loginPass" required>
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="index.html" class="logo">
+          <img src="images/logo.png" alt="LUGX Gaming" class="logo-img">
+        </a>
+        <p>Your ultimate gaming destination.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#shop">Our Shop</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <ul>
+          <li>hello@lugxgaming.com</li>
+          <li>+20 100 000 0000</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> LUGX Gaming Company. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

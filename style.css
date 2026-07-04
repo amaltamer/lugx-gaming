@@ -1,0 +1,771 @@
+
+:root {
+  /* Color tokens */
+  --bg: #0B0B12;
+  --surface: #15151F;
+  --surface-2: #1C1C29;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #ECECF5;
+  --muted: #8D8DA6;
+  --accent: #7C5CFF;      /* electric violet — primary */
+  --accent-2: #00E5FF;    /* cyan — secondary / glow */
+  --danger: #FF5C7A;
+
+  /* Type */
+  --font-display: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Layout */
+  --container-w: 1180px;
+  --radius: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Visible focus state for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+/* ---------- 2. TYPOGRAPHY ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+h2 { font-size: clamp(1.6rem, 3.4vw, 2.4rem); }
+h3 { font-size: 1.15rem; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent-2);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+
+.hero-sub {
+  color: var(--muted);
+  max-width: 40ch;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+}
+
+.highlight {
+  color: var(--accent);
+}
+
+/* ---------- 3. LAYOUT HELPERS ---------- */
+.container {
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.section-alt {
+  background: var(--surface);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.link-arrow {
+  font-family: var(--font-mono);
+  color: var(--accent-2);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+/* ---------- 4. HEADER / NAV ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 11, 18, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 34px;
+  width: auto;
+}
+
+/* أيقونة الشوبينج جنب زرار Sign In */
+.shop-icon-link {
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.shop-icon-link:hover {
+  opacity: 1;
+}
+
+.shop-icon-link img {
+  width: 22px;
+  height: 22px;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 2rem;
+}
+
+.main-nav a {
+  font-size: 0.95rem;
+  color: var(--muted);
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--text);
+}
+
+.main-nav a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -22px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Hamburger — hidden on desktop */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 26px;
+}
+
+.nav-toggle span {
+  height: 2px;
+  width: 100%;
+  background: var(--text);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* ---------- 5. BUTTONS ---------- */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 rgba(124, 92, 255, 0);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 24px rgba(124, 92, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ---------- 6. HERO ---------- */
+.hero {
+  padding: 5rem 0 6rem;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-search {
+  display: flex;
+  margin-top: 2rem;
+  max-width: 460px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.hero-search input {
+  flex: 1;
+  border: none;
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.9rem 1.1rem;
+  font-family: var(--font-body);
+}
+
+.hero-search .btn {
+  border-radius: 0;
+}
+
+/* الفريم الأساسي لصورة البانر (banner-image.jpg) — شكل مقصوص الزاوية */
+.hero-visual-frame {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--surface-2), var(--surface) 70%);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 60px rgba(124, 92, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 88% 100%, 0 100%);
+}
+
+.hero-visual-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- 7. GAME CARDS ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.game-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-2);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.18);
+}
+
+.game-card-media {
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(150deg, var(--surface-2), var(--bg));
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-card-media img {
+  transform: scale(1.05);
+}
+
+.game-card-media .tag {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--accent-2);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  z-index: 2;
+}
+
+.game-card-body {
+  padding: 1rem 1.1rem 1.2rem;
+}
+
+.game-card-body .price {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-top: 0.3rem;
+}
+
+.game-card-body .price small {
+  color: var(--muted);
+  font-size: 0.75em;
+}
+
+/* ---------- 8. CATEGORIES ---------- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.category-card {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+
+  background-size: cover;
+  background-position: center;
+
+  box-shadow: inset 0 -80px 60px -20px rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.category-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* ---------- 9. CTA BAND ---------- */
+.cta-band {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 3.5rem 0;
+}
+
+.cta-band-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.cta-band-inner p {
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.cta-form {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.cta-form input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  min-width: 240px;
+}
+
+/* ---------- 10. CONTACT PAGE ---------- */
+.page-hero {
+  padding: 4.5rem 0 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.info-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+}
+
+.info-icon {
+  font-size: 1.3rem;
+}
+
+.info-card h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: none;
+  margin-bottom: 0.2rem;
+}
+
+.info-card p {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  resize: vertical;
+}
+
+.form-group input:invalid:not(:placeholder-shown) {
+  border-color: var(--danger);
+}
+
+.error-msg {
+  color: var(--danger);
+  font-size: 0.78rem;
+  min-height: 1.1rem;
+  margin-top: 0.3rem;
+}
+
+.form-success {
+  margin-top: 1rem;
+  color: var(--accent-2);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.map-section {
+  padding-bottom: 5rem;
+}
+
+.map-placeholder {
+  max-width: var(--container-w);
+  margin: 0 auto;
+  height: 320px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+/* ---------- 11. MODAL (Sign In) ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 200;
+}
+
+.modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  width: 90%;
+  max-width: 380px;
+  position: relative;
+}
+
+.modal-box h3 {
+  margin-bottom: 1.2rem;
+}
+
+.modal-box label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0.8rem 0 0.4rem;
+}
+
+.modal-box input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius);
+}
+
+.modal-box .btn {
+  margin-top: 1.4rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.4rem;
+  color: var(--muted);
+}
+
+/* ---------- 12. FOOTER ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 2rem;
+  padding: 3.5rem 0 2rem;
+}
+
+.footer-inner p {
+  color: var(--muted);
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.footer-col h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: none;
+  margin-bottom: 0.9rem;
+}
+
+.footer-col ul li {
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 1.2rem 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- 13. RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    order: -1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-120%);
+    transition: transform 0.25s ease;
+  }
+
+  .main-nav.is-open {
+    transform: translateY(0);
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.2rem;
+  }
+
+  .main-nav a.active::after {
+    display: none;
+  }
+
+  /* Turn hamburger into an X when nav is open */
+  .nav-toggle.is-active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.is-active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-band-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-form {
+    width: 100%;
+  }
+
+  .cta-form input {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .card-grid,
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-ghost {
+    display: none; /* keep header tidy on very small screens */
+  }
+}
